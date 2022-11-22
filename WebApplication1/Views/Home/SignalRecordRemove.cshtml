@@ -1,0 +1,88 @@
+﻿@model WebApplication1.Models.SignalModel
+
+@{
+    ViewData["Title"] = "Удаление записи";
+}
+
+<h1></h1>
+
+<h3></h3>
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Номер шлейфа
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HS)
+        </dd>
+        <dt class="col-sm-2">
+            Кабинет
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Сabinet)
+        </dd>
+        <dt class="col-sm-2">
+            Тип сигнализации
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SignalType)
+        </dd>
+        <dt class="col-sm-2">
+            Названия датчиков
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SensorName)
+        </dd>
+        <dt class="col-sm-2">
+            Раздел
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Section)
+        </dd>
+        <dt class="col-sm-2">
+            Кодовая комбинация
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CodeCombination)
+        </dd>
+        <dt class="col-sm-2">
+            БИ (номер\лампочка)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BI_Number_Lamp)
+        </dd>
+        <dt class="col-sm-2">
+            Подпись на БИ
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Signature_BI)
+        </dd>
+        <dt class="col-sm-2">
+            Комментарий на БИ
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Comment_BI)
+        </dd>
+        <dt class="col-sm-2">
+            Подпись на табло охраны
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Signature_Security)
+        </dd>
+        <dt class="col-sm-2">
+            Примечание
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Bonus)
+        </dd>
+    </dl>
+    
+    <form asp-action="SignalRecordRemove">
+        <input type="hidden" asp-for="RecordID" />
+        <input type="hidden" asp-for="DeviceID" />
+        <input type="submit" value="Подтвердить" class="btn btn-danger" /> |
+        <a href='javascript:history.go(-1)'>Отмена</a>
+    </form>
+</div>

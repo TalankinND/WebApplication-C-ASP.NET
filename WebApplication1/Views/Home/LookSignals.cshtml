@@ -1,0 +1,117 @@
+﻿@model List<WebApplication1.Models.SignalModel>
+
+@{
+    ViewData["Title"] = "";
+}
+@{
+    object path = ""; 
+    Url.ActionContext.RouteData.Values.TryGetValue("id",out path);
+    var PageId = path;
+}
+
+<head>
+    
+</head>
+<body>
+    <form asp-controller="Home" asp-action="OnPostImportSignal" asp-route-id="@PageId" method="post"
+          enctype="multipart/form-data" class="Import">
+
+        <input type="file" name="file" />
+        <button  type="submit">Загрузить данные из Excel</button>
+    </form>
+    <h1></h1>
+    <form method="post">
+        <a asp-controller="Home" asp-action="OnPostExportSignal" asp-route-id="@PageId">Скачать информацию об устройстве</a>
+        <a asp-controller="Home" asp-action="OnPostExportAllSignal">Скачать информацию об всех устройствах типа "Сигнал"</a>
+    </form>
+    <p>
+        <a asp-action="CreateSignals" asp-route-id="@PageId">Добавить запись</a>
+    </p>
+    <p>
+        <a asp-action="Index">Вернуться на главную</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Номер шлейфа
+                </th>
+                <th>
+                    Кабинет
+                </th>
+                <th>
+                    Тип сигнализации
+                </th>
+                <th>
+                    Названия датчиков
+                </th>
+                <th>
+                    Раздел
+                </th>
+                <th>
+                    Кодовая комбинация
+                </th>
+                <th>
+                    БИ (номер\лампочка)
+                </th>
+                <th>
+                    Подпись на БИ
+                </th>
+                <th>
+                    Комментарий на БИ
+                </th>
+                <th>
+                    Подпись на табло охраны
+                </th>
+                <th>
+                    Примечание
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.OrderBy(s=>s.HS))
+            {
+                <tr>
+                    <td>
+                        @item.HS
+                    </td>
+                    <td>
+                        @item.Сabinet
+                    </td>
+                    <td>
+                        @item.SignalType
+                    </td>
+                    <td>
+                        @item.SensorName
+                    </td>
+                    <td>
+                        @item.Section
+                    </td>
+                    <td>
+                        @item.CodeCombination
+                    </td>
+                    <td>
+                        @item.BI_Number_Lamp
+                    </td>
+                    <td>
+                        @item.Signature_BI
+                    </td>
+                    <td>
+                        @item.Comment_BI
+                    </td>
+                    <td>
+                        @item.Signature_Security
+                    </td>
+                    <td>
+                        @item.Bonus
+                    </td>
+                    <td>
+                        <a asp-action="SignalsRecordEdit" asp-route-id="@item.RecordID">Изменить</a> |
+                        <a asp-action="SignalRecordRemove" asp-route-id="@item.RecordID">Удалить</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>

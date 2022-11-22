@@ -1,0 +1,82 @@
+﻿@model WebApplication1.Models.SignalModel
+
+@{
+    ViewData["Title"] = "Изменение записи";
+}
+
+<h1></h1>
+
+<h4></h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SignalsRecordEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="RecordID" />
+            <input type="hidden" asp-for="DeviceID" />
+            <div class="form-group">
+                <label asp-for="HS" class="control-label">Номер шлейфа</label>
+                <input asp-for="HS" class="form-control" />
+                <span asp-validation-for="HS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Сabinet" class="control-label">Кабинет</label>
+                <input asp-for="Сabinet" class="form-control" />
+                <span asp-validation-for="Сabinet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SignalType" class="control-label">Тип сигнализации</label>
+                <input asp-for="SignalType" class="form-control" />
+                <span asp-validation-for="SignalType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SensorName" class="control-label">Названия датчиков</label>
+                <input asp-for="SensorName" class="form-control" />
+                <span asp-validation-for="SensorName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Section" class="control-label">Раздел</label>
+                <input asp-for="Section" class="form-control" />
+                <span asp-validation-for="Section" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CodeCombination" class="control-label">Кодовая комбинация</label>
+                <input asp-for="CodeCombination" class="form-control" />
+                <span asp-validation-for="CodeCombination" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BI_Number_Lamp" class="control-label">БИ (номер\лампочка)</label>
+                <input asp-for="BI_Number_Lamp" class="form-control" />
+                <span asp-validation-for="BI_Number_Lamp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Signature_BI" class="control-label">Подпись на БИ</label>
+                <input asp-for="Signature_BI" class="form-control" />
+                <span asp-validation-for="Signature_BI" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Comment_BI" class="control-label">Комментарий на БИ</label>
+                <input asp-for="Comment_BI" class="form-control" />
+                <span asp-validation-for="Comment_BI" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Signature_Security" class="control-label">Подпись на табло охраны</label>
+                <input asp-for="Signature_Security" class="form-control" />
+                <span asp-validation-for="Signature_Security" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bonus" class="control-label">Примечание</label>
+                <input asp-for="Bonus" class="form-control" />
+                <span asp-validation-for="Bonus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Подтвердить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a href='javascript:history.go(-1)'>Отмена</a>
+</div>
+

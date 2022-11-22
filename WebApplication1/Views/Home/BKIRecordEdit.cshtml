@@ -1,0 +1,82 @@
+﻿@model WebApplication1.Models.BKIModel
+
+@{
+    ViewData["Title"] = "Изменение записи";
+}
+
+<h1></h1>
+
+<h4></h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="BKIRecordEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="RecordId" />
+            <input type="hidden" asp-for="DeviceID" />
+            <div class="form-group">
+                <label asp-for="Lamp" class="control-label">№</label>
+                <input asp-for="Lamp" class="form-control" />
+                <span asp-validation-for="Lamp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Object" class="control-label">Объект</label>
+                <input asp-for="Object" class="form-control" />
+                <span asp-validation-for="Object" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OSType" class="control-label">Тип ОС</label>
+                <input asp-for="OSType" class="form-control" />
+                <span asp-validation-for="OSType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CommonCondition" class="control-label">Нормальное состояние</label>
+                <input asp-for="CommonCondition" class="form-control" />
+                <span asp-validation-for="CommonCondition" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PKNumber" class="control-label">Номер ППК</label>
+                <input asp-for="PKNumber" class="form-control" />
+                <span asp-validation-for="PKNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SHNumber" class="control-label">Номер шлейфа</label>
+                <input asp-for="SHNumber" class="form-control" />
+                <span asp-validation-for="SHNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Deposit_Withdraw_code" class="control-label">Код взятия\Снятия</label>
+                <input asp-for="Deposit_Withdraw_code" class="form-control" />
+                <span asp-validation-for="Deposit_Withdraw_code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BKI_Commentary" class="control-label">Комментарий на БКИ</label>
+                <input asp-for="BKI_Commentary" class="form-control" />
+                <span asp-validation-for="BKI_Commentary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="First_Inscription" class="control-label">1-я надпись</label>
+                <input asp-for="First_Inscription" class="form-control" />
+                <span asp-validation-for="First_Inscription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Second_Incription" class="control-label">2-я надпись</label>
+                <input asp-for="Second_Incription" class="form-control" />
+                <span asp-validation-for="Second_Incription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Section_Number" class="control-label">Номер раздела</label>
+                <input asp-for="Section_Number" class="form-control" />
+                <span asp-validation-for="Section_Number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Подтвердить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a href='javascript:history.go(-1)'>Отмена</a>
+</div>
+

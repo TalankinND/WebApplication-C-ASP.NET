@@ -1,0 +1,39 @@
+﻿@model WebApplication1.Models.DeviceListModel
+
+@{
+    ViewData["Title"] = "Удаление записи";
+}
+
+<h1></h1>
+
+<h3></h3>
+<div>
+    <h4>DeviceListModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Наименование устройства
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DeviceName)
+        </dd>
+        <dt class="col-sm-2">
+            Сокращённое наименование устройства
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DeviceShortName)
+        </dd>
+        <dt class="col-sm-2">
+            Тип устройства
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DeviceType)
+        </dd>
+    </dl>
+    
+    <form asp-action="DeviceListRecordRemove">
+        <input type="hidden" asp-for="DeviceID" />
+        <input type="submit" value="Подтвердить" class="btn btn-danger" /> |
+        <a asp-action="Index">Отмена</a>
+    </form>
+</div>

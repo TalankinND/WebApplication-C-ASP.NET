@@ -1,0 +1,88 @@
+﻿@model WebApplication1.Models.BKIModel
+
+@{
+    ViewData["Title"] = "Удаление записи";
+}
+
+<h1></h1>
+
+<h3>Вы действительно хотите удалить запись?</h3>
+<div>
+    <h4>BKIModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            №
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Lamp)
+        </dd>
+        <dt class="col-sm-2">
+            Объект
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Object)
+        </dd>
+        <dt class="col-sm-2">
+            Тип ОС
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OSType)
+        </dd>
+        <dt class="col-sm-2">
+            Нормальное состояние
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CommonCondition)
+        </dd>
+        <dt class="col-sm-2">
+            Номер ППК
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PKNumber)
+        </dd>
+        <dt class="col-sm-2">
+            Номер шлейфа
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SHNumber)
+        </dd>
+        <dt class="col-sm-2">
+            Код взятия\Снятия
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Deposit_Withdraw_code)
+        </dd>
+        <dt class="col-sm-2">
+            Комментарий на БКИ
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BKI_Commentary)
+        </dd>
+        <dt class="col-sm-2">
+            1-я надпись
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.First_Inscription)
+        </dd>
+        <dt class="col-sm-2">
+            2-я надпись
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Second_Incription)
+        </dd>
+        <dt class="col-sm-2">
+            Номер раздела
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Section_Number)
+        </dd>
+    </dl>
+    
+    <form asp-action="BKIRecordRemove">
+        <input type="hidden" asp-for="RecordId" />
+        <input type="hidden" asp-for="DeviceID" />
+        <input type="submit" value="Подтвердить" class="btn btn-danger" /> |
+        <a href='javascript:history.go(-1)'>Отмена</a>
+    </form>
+</div>

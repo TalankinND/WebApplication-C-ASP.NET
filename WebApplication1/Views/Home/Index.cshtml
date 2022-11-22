@@ -1,0 +1,66 @@
+﻿@model IEnumerable<WebApplication1.Models.DeviceListModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Список устройств</h1>
+<form asp-controller="Home" asp-action="OnPostImportDeviceList" method="post"
+          enctype="multipart/form-data" class="Import">
+
+        <input type="file" name="file" />
+        <button type="submit">Загрузить данные из Excel</button>
+</form>
+<form method="post" class="Export">
+<p>
+    <a asp-controller="Home" asp-action="OnPostExportDeviceList">Скачать в Excel</a>
+</p>
+<p>
+    <a asp-controller="Home" asp-action="AddDeviceListRecord">Добавить устройства</a>
+</p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Наименование устройства
+            </th>
+            <th>
+                Сокращённое наименование устройства
+            </th>
+            <th>
+                Тип устройства
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeviceName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeviceShortName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeviceType)
+                </td>
+                <td>
+                    <a asp-controller="Home" asp-action="DeviceRecordEdit" asp-route-id="@item.DeviceID">Изменить</a>
+                    @{
+                        if (item.DeviceType.ToLower() == "сигнал")
+                        {
+                            <a asp-controller="Home" asp-action="LookSignals" asp-route-id="@item.DeviceID">Подробнее</a>
+                        }
+                        else if (item.DeviceType.ToLower() == "бки")
+                        {
+                            <a asp-controller="Home" asp-action="LookBKI" asp-route-id="@item.DeviceID">Подробнее</a>
+                        }
+                    }
+                    <a asp-controller="Home" asp-action="DeviceListRecordRemove" asp-route-id="@item.DeviceID">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

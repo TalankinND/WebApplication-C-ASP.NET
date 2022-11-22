@@ -1,0 +1,111 @@
+﻿@model IEnumerable<WebApplication1.Models.BKIModel>
+
+@{
+    ViewData["Title"] = "";
+}
+@{
+    object path = "";
+    Url.ActionContext.RouteData.Values.TryGetValue("id", out path);
+    var PageId = path;
+}
+    <form asp-controller="Home" asp-action="OnPostImportBKI" asp-route-id="@PageId" method="post"
+          enctype="multipart/form-data" class="Import">
+
+        <input type="file" name="file" />
+        <button type="submit">Загрузить данные из Excel</button>
+    </form>
+<h1></h1>
+<form method="post">
+    <a asp-controller="Home" asp-action="OnPostExportBKI" asp-route-id="@PageId">Скачать информация об текущем устройстве</a>
+    <a asp-controller="Home" asp-action="OnPostExportAllBKI">Скачать информацию об всех устройствах типа "БКИ"</a>
+</form>
+<p>
+    <a asp-action="CreateBKI" asp-route-id="@PageId">Добавить запись</a>
+</p>
+<p>
+    <a asp-action="Index">Вернуться на главную</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                №
+            </th>
+            <th>
+                Объект
+            </th>
+            <th>
+                Тип ОС
+            </th>
+            <th>
+                Нормальное состояние
+            </th>
+            <th>
+                Номер ППК
+            </th>
+            <th>
+                Номер шлейфа
+            </th>
+            <th>
+                Код взятия\Снятия
+            </th>
+            <th>
+                Комментарий на БКИ
+            </th>
+            <th>
+                1-я надпись
+            </th>
+            <th>
+                2-я надпись
+            </th>
+            <th>
+                Номер раздела
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.OrderBy(s=>s.Lamp))
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lamp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Object)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OSType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommonCondition)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PKNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SHNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Deposit_Withdraw_code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BKI_Commentary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.First_Inscription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Second_Incription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Section_Number)
+            </td>
+            <td>
+                <a asp-action="BKIRecordEdit" asp-route-id="@item.RecordId">Изменить</a> |
+                <a asp-action="BKIRecordRemove" asp-route-id="@item.RecordId">Удалить</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
